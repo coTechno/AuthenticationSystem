@@ -1,26 +1,59 @@
 function resetFields() {
-  document.getElementById("registration-form").reset();
+  document.getElementById("s-form").reset();
+  document.getElementById("l-form").reset();
 
   document.getElementById("firstValid").style.display = "none";
   document.getElementById("lastValid").style.display = "none";
   document.getElementById("emailValid").style.display = "none";
   document.getElementById("phoneValid").style.display = "none";
   document.getElementById("passwordValid").style.display = "none";
-  document.getElementById("cpasswordValid").style.display = "none";
-  document.getElementById("login-emailValid").style.display = "none";
-  document.getElementById("login-passwordValid").style.display = "none";
 }
-function validate() {
-  let firstName = document.getElementById("first-name").value;
-  let lastName = document.getElementById("last-name").value;
-  let email = document.getElementById("email").value;
-  let phoneNumber = document.getElementById("phone-number").value;
-  let password = document.getElementById("password").value;
-  let confirmPassword = document.getElementById("confirm-password").value;
-  let loginEmail = document.getElementById("login-email").value;
-  let loginPassword = document.getElementById("login-password").value;
+let savedEmail = ''
+let savedPassword = ''
 
-  let error = false;
+
+// --------------------------------------------------------- ACTIVE CLASSES---------------------------------------------------------------
+let homePage = document.getElementById("home");
+let signUpPage = document.getElementById("signup-form");
+let loginPage = document.getElementById("login-form");
+
+function showHome() {
+  signUpPage.style.display = "none";
+  loginPage.style.display = "none";
+  homePage.style.display = "block";
+
+  document.getElementById("home-link").classList.add("active");
+  document.getElementById("signup-link").classList.remove("active");
+  document.getElementById("login-link").classList.remove("active");
+}
+function showLogin() {
+  homePage.style.display = "none";
+  signUpPage.style.display = "none";
+  loginPage.style.display = "block";
+
+  document.getElementById("home-link").classList.remove("active");
+  document.getElementById("signup-link").classList.remove("active");
+  document.getElementById("login-link").classList.add("active");
+}
+function showSignUp() {
+  homePage.style.display = "none";
+  loginPage.style.display = "none";
+  signUpPage.style.display = "block";
+
+  document.getElementById("home-link").classList.remove("active");
+  document.getElementById("signup-link").classList.add("active");
+  document.getElementById("login-link").classList.remove("active");
+}
+
+function signup() {
+	let firstName = document.getElementById('first-name').value
+	let lastName = document.getElementById('last-name').value
+	let email = document.getElementById('email').value
+	let phoneNumber = document.getElementById('phone-number').value
+	let password = document.getElementById('password').value
+	let confirmPassword = document.getElementById('confirm-password').value
+
+	let error = false
 
   if (firstName.length >= 2) {
     document.getElementById("firstValid").style.display = "block";
@@ -69,77 +102,38 @@ function validate() {
     document.getElementById("phoneValid").style.display = "none";
   }
 
-  if (password !== null) {
-    document.getElementById("stateValid").style.display = "block";
-    document.getElementById("stateInvalid").style.display = "none";
+  if (password > 1000) {
+    document.getElementById("passwordValid").style.display = "block";
+    document.getElementById("passwordInvalid").style.display = "none";
   } else {
     error = true;
-    document.getElementById("stateInvalid").style.display = "block";
-    document.getElementById("stateValid").style.display = "none";
+    document.getElementById("passwordInvalid").style.display = "block";
+    document.getElementById("passwordValid").style.display = "none";
   }
 
-  if (confirmPassword === password) {
-    document.getElementById("cpasswordValid").style.display = "block";
-    document.getElementById("cpasswordInvalid").style.display = "none";
-  } else {
-    error = true;
-    document.getElementById("cpasswordInvalid").style.display = "block";
-    document.getElementById("cpasswordValid").style.display = "none";
-  }
+	if(password !== confirmPassword) {
+		document.getElementById('confirm-password-invalid').style.display = 'block'
+		error = true
+	} else {
+		document.getElementById('confirm-password-invalid').style.display = 'none'
+	}
 
-  if (loginEmail === email) {
-    document.getElementById("login-emailValid").style.display = "block";
-    document.getElementById("login-emailInvalid").style.display = "none";
-  } else {
-    error = true;
-    document.getElementById("login-emailInvalid").style.display = "block";
-    document.getElementById("login-emailValid").style.display = "none";
-  }
-  if (loginPassword === password) {
-    document.getElementById("login-passwordValid").style.display = "block";
-    document.getElementById("login-passwordInvalid").style.display = "none";
-  } else {
-    error = true;
-    document.getElementById("login-passwordInvalid").style.display = "block";
-    document.getElementById("login-passwordValid").style.display = "none";
-  }
-  if (!error) {
-    alert("Your details have been saved successfully!");
-    resetFields();
-  }
+	if(!error) {
+		savedEmail = email
+		savedPassword = password
+		alert('Your details have been saved successfully!')
+    resetFields()
+	}
 }
 
-let home = document.getElementById("home");
-let signUp = document.getElementById("signup-form");
-let login = document.getElementById("login-form");
+function login () {
+	let loginEmail = document.getElementById('login-email').value
+	let loginPassword = document.getElementById('login-password').value
 
-function showHome() {
-  signUp.style.display = "none";
-  login.style.display = "none";
-  home.style.display = "block";
-  home.addEventListener("click", () => {
-    home.classList.add("active");
-    signUp.classList.remove("active");
-    login.classList.remove("active");
-  });
-}
-function showLogin() {
-  home.style.display = "none";
-  signUp.style.display = "none";
-  login.style.display = "block";
-  login.addEventListener("click", () => {
-    login.classList.add("active");
-    signUp.classList.remove("active");
-    home.classList.remove("active");
-  });
-}
-function showSignUp() {
-  home.style.display = "none";
-  login.style.display = "none";
-  signUp.style.display = "block";
-  signUp.addEventListener("click", () => {
-    signUp.classList.add("active");
-    login.classList.remove("active");
-    home.classList.remove("active");
-  });
+	if(loginEmail === savedEmail && loginPassword === savedPassword) {
+		alert('Access granted')
+    resetFields()
+	} else {
+		alert('Access denied')
+	}
 }
