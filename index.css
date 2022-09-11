@@ -1,0 +1,34 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+section{
+	height: fit-content;
+	background-image: linear-gradient(rgba(4,9,30,0.7),rgba(4,9,30,0.7)), url('assets/bg.jpg');
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+	color: #fff;
+}
+#signup-form {
+	width: 800px;
+	margin: 20px auto;
+}
+
+#login-form {
+	width: 700px;
+	margin: 20px auto;
+}
+#signup-form, #login-form{
+	display: none;
+}
+
+@media only screen and (max-width: 814px) {
+	#signup-form, #login-form {
+		width: 335px;
+		margin: 20px, auto;
+	}
+	.text-center{
+		padding: 30px;
+	}
+}
