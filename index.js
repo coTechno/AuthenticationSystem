@@ -1,3 +1,5 @@
+let USERS_DB = []
+
 function resetFields() {
   document.getElementById("s-form").reset();
   document.getElementById("l-form").reset();
@@ -102,7 +104,7 @@ function signup() {
     document.getElementById("phoneValid").style.display = "none";
   }
 
-  if (password > 1000) {
+  if (password.length >= 6) {
     document.getElementById("passwordValid").style.display = "block";
     document.getElementById("passwordInvalid").style.display = "none";
   } else {
@@ -119,10 +121,17 @@ function signup() {
 	}
 
 	if(!error) {
-		savedEmail = email
-		savedPassword = password
+		let userDetails = {
+      firstName,
+      lastName,
+      email,
+      phoneNumber,
+      password: encryptPassword(password),
+    }
+		USERS_DB.push(userDetails)
 		alert('Your details have been saved successfully!')
-    resetFields()
+		document.getElementById('signup-form-id').reset()
+		console.log(USERS_DB)
 	}
 }
 
@@ -130,10 +139,50 @@ function login () {
 	let loginEmail = document.getElementById('login-email').value
 	let loginPassword = document.getElementById('login-password').value
 
-	if(loginEmail === savedEmail && loginPassword === savedPassword) {
+	if(USERS_DB.find(user => user.email === loginEmail && decryptPassword(user.password) === loginPassword)) {
 		alert('Access granted')
-    resetFields()
 	} else {
 		alert('Access denied')
 	}
+}
+
+let encryptionRule = {
+  'A': 'N', 'B': 'O', 'C': 'P', 'D': 'Q',
+  'E': 'R', 'F': 'S', 'G': 'T', 'H': 'U',
+  'I': 'V', 'J': 'W', 'K': 'X', 'L': 'Y',
+  'M': 'Z', 'N': 'A', 'O': 'B', 'P': 'C',
+  'Q': 'D', 'R': 'E', 'S': 'F', 'T': 'G',
+  'U': 'H', 'V': 'I', 'W': 'J', 'X': 'K',
+  'Y': 'L', 'Z': 'M',
+  'a': 'n', 'b': 'o', 'c': 'p', 'd': 'q',
+  'e': 'r', 'f': 's', 'g': 't', 'h': 'u',
+  'i': 'v', 'j': 'w', 'k': 'x', 'l': 'y',
+  'm': 'z', 'n': 'a', 'o': 'b', 'p': 'c',
+  'q': 'd', 'r': 'e', 's': 'f', 't': 'g',
+  'u': 'h', 'v': 'i', 'w': 'j', 'x': 'k',
+  'y': 'l', 'z': 'm',
+  '0': '5', '1': '6', '2': '7', '3': '8',
+  '4': '9', '5': '0', '6': '1', '7': '2',
+  '8': '3', '9': '4',
+  '!': '#', '$': '%', '&': '+', '-': '@',
+  '': '~', '#': '!', '%': '$', '+': '&',
+  '@': '-', '~': ''
+}
+
+function encryptPassword (inputString){
+  let encryptedString = ''
+  for(let char of inputString){
+    encryptedString = encryptedString + encryptionRule[char]
+  }
+  return encryptedString
+}
+function decryptPassword(encryptedString){
+  let originalString = ''
+  let keys = Object.keys(encryptionRule)
+  let values = Object.values(encryptionRule)
+  for(let char of encryptedString){
+    let requiredIndex = values.indexOf(char)
+    originalString = originalString + keys[requiredIndex]
+  }
+  return originalString
 }

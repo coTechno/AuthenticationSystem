@@ -91,12 +91,10 @@
         <p class="lead">
           Lorem, ipsum dolor sit amet consectetur adipisicing elit. Esse sequi
           laboriosam vel dolor nihil veritatis ipsum exercitationem provident
-          neque? Similiquensequatur id. Numquam eos odio rerum porro cupiditate
-          neque? Similique ascupiditate neque? Similique assumenda maxime
-          accusamus totam optio consequuntur quidem veniam consequatur id.
-          Numquam eos odio rerum porro cupiditate tempore ratione expedita
-          dolorum, vel sapiente velit ex est corporis molestias optio veniam!
-          Ab.
+          neque? Similique assumenda maxime accusamus totam optio consequuntur
+          quidem veniam consequatur id. Numquam eos odio rerum porro cupiditate
+          tempore ratione expedita dolorum, vel sapiente velit ex est corporis
+          molestias optio veniam! Ab.
         </p>
         <hr />
         <p>
@@ -107,7 +105,6 @@
         <p class="lead">
           Lorem ipsum dolor sit amet consectetur, adipisicing elit. At sunt nam
           minus, architecto error rerum dignissimos nihil officia voluptatem
-          repudiandae asperns vsaepe assumenda ad cupiditate aliquam laudantium
           repudiandae aspernatur voluptate. Magni quis, itaque hic sit autem
           voluptatum corporis vero asperiores expedita corrupti eligendi maiores
           delectus explicabo maxime ea eius quidem, nemo alias? Officia magni
@@ -127,107 +124,109 @@
 
       <!-- ----------------------------------- SIGN UP FORM ----------------------------------- -->
       <div id="signup-form">
-        <form class="row g-3" id="s-form">
-          <h1 class="display-4 text-center">Sign Up Form</h1>
-          <div class="col-md-6">
-            <label for="first-name" class="form-label">First name</label>
-            <input
-              type="text"
-              class="form-control"
-              id="first-name"
-              required
-              autocomplete="off"
-            />
-            <div class="valid-feedback" id="firstValid">Looks good!</div>
-            <div class="invalid-feedback" id="firstInvalid">
-              Please enter a your name.
-            </div>
-          </div>
-          <div class="col-md-6">
-            <label for="last-name" class="form-label">Last name</label>
-            <input
-              type="text"
-              class="form-control"
-              id="last-name"
-              required
-              autocomplete="off"
-            />
-            <div class="valid-feedback" id="lastValid">Looks good!</div>
-            <div class="invalid-feedback" id="lastInvalid">
-              Please enter a your last name.
-            </div>
-          </div>
-          <div class="col-md-6">
-            <label for="email" class="form-label">Email</label>
-            <div class="input-group has-validation">
-              <span class="input-group-text" id="inputGroupPrepend">@</span>
+        <div id="s-form">
+          <form class="row g-3" id="signup-form-id">
+            <h1 class="display-4 text-center">Sign Up Form</h1>
+            <div class="col-md-6">
+              <label for="first-name" class="form-label">First name</label>
               <input
                 type="text"
                 class="form-control"
-                id="email"
-                aria-describedby="inputGroupPrepend"
+                id="first-name"
                 required
                 autocomplete="off"
               />
-              <div class="valid-feedback" id="emailValid">Looks good!</div>
-              <div class="invalid-feedback" id="emailInvalid">
-                Please enter a valid email.
+              <div class="valid-feedback" id="firstValid">Looks good!</div>
+              <div class="invalid-feedback" id="firstInvalid">
+                Please enter a your name.
               </div>
             </div>
-          </div>
-          <div class="col-md-6">
-            <label for="phone-number" class="form-label">Phone Number</label>
-            <div class="input-group has-validation">
-              <span class="input-group-text" id="inputGroupPrepend">+91</span>
+            <div class="col-md-6">
+              <label for="last-name" class="form-label">Last name</label>
               <input
                 type="text"
                 class="form-control"
-                id="phone-number"
-                aria-describedby="inputGroupPrepend"
+                id="last-name"
                 required
                 autocomplete="off"
               />
-              <div class="valid-feedback" id="phoneValid">Looks good!</div>
-              <div class="invalid-feedback" id="phoneInvalid">
-                Please enter a valid phone number.
+              <div class="valid-feedback" id="lastValid">Looks good!</div>
+              <div class="invalid-feedback" id="lastInvalid">
+                Please enter a your last name.
               </div>
             </div>
-          </div>
-          <div class="col-md-6">
-            <label for="password" class="form-label">Password</label>
-            <input
-              type="password"
-              class="form-control"
-              id="password"
-              required
-              autocomplete="off"
-            />
-            <div class="valid-feedback" id="passwordValid">Looks good!</div>
-            <div class="invalid-feedback" id="passwordInvalid">
-              password must be at least 4 characters.
+            <div class="col-md-6">
+              <label for="email" class="form-label">Email</label>
+              <div class="input-group has-validation">
+                <span class="input-group-text" id="inputGroupPrepend">@</span>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="email"
+                  aria-describedby="inputGroupPrepend"
+                  required
+                  autocomplete="off"
+                />
+                <div class="valid-feedback" id="emailValid">Looks good!</div>
+                <div class="invalid-feedback" id="emailInvalid">
+                  Please enter a valid email.
+                </div>
+              </div>
             </div>
-          </div>
-          <div class="col-md-6">
-            <label for="confirm-password" class="form-label"
-              >Confirm Password</label
-            >
-            <input
-              type="password"
-              class="form-control"
-              id="confirm-password"
-              required
-              autocomplete="off"
-            />
-            <div class="invalid-feedback" id="confirm-password-invalid">
-              Password and confirm password don't match.
+            <div class="col-md-6">
+              <label for="phone-number" class="form-label">Phone Number</label>
+              <div class="input-group has-validation">
+                <span class="input-group-text" id="inputGroupPrepend">+91</span>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="phone-number"
+                  aria-describedby="inputGroupPrepend"
+                  required
+                  autocomplete="off"
+                />
+                <div class="valid-feedback" id="phoneValid">Looks good!</div>
+                <div class="invalid-feedback" id="phoneInvalid">
+                  Please enter a valid phone number.
+                </div>
+              </div>
             </div>
-          </div>
-          <div class="d-grid col-8 mx-auto my-4">
-            <button class="btn btn-dark" type="button" onclick="signup()">
-              Sign up
-            </button>
-          </div>
-        </form>
+            <div class="col-md-6">
+              <label for="password" class="form-label">Password</label>
+              <input
+                type="password"
+                class="form-control"
+                id="password"
+                required
+                autocomplete="off"
+              />
+              <div class="valid-feedback" id="passwordValid">Looks good!</div>
+              <div class="invalid-feedback" id="passwordInvalid">
+                password must be at least 6 characters.
+              </div>
+            </div>
+            <div class="col-md-6">
+              <label for="confirm-password" class="form-label"
+                >Confirm Password</label
+              >
+              <input
+                type="password"
+                class="form-control"
+                id="confirm-password"
+                required
+                autocomplete="off"
+              />
+              <div class="invalid-feedback" id="confirm-password-invalid">
+                Password and confirm password don't match.
+              </div>
+            </div>
+            <div class="d-grid col-8 mx-auto my-4">
+              <button class="btn btn-dark" type="button" onclick="signup()">
+                Sign up
+              </button>
+            </div>
+          </form>
+        </div>
       </div>
 
       <!-- ----------------------------------- LOGIN FORM ----------------------------------- -->
